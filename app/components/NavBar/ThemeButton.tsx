@@ -14,7 +14,7 @@ import {
 export  default function ThemeButton() {
   return (
     <Select>
-      <SelectTrigger className="w-[80px]">
+      <SelectTrigger className="w-full">
         <SelectValue placeholder={<MdLightMode />}/> 
       </SelectTrigger>
       <SelectContent>

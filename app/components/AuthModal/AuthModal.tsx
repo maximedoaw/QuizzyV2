@@ -9,55 +9,26 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import AuthStore from "@/zustand/AuthStore"
 
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { authState } from '@/atom/AuthStateAtom'
+
 import React from 'react'
-import { useRecoilState } from "recoil"
+import Login from "./AuthModalContent/Login"
+import SignUp from "./AuthModalContent/SignUp"
+import ResetPassword from "./AuthModalContent/ResetPassword"
 
 type AuthModalProps = {}
 
 const AuthModal : React.FC<AuthModalProps> = () => {
-
-//  const [openModal, setOpenModal] = useRecoilState(authState)    
-//   setOpenModal({open: true, view : 'Login'})
+ const { view } = AuthStore()
  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Share</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>Share link</DialogTitle>
-          <DialogDescription>
-            Anyone who has this link will be able to view this.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="flex items-center space-x-2">
-          <div className="grid flex-1 gap-2">
-            <Label htmlFor="link" className="sr-only">
-              Link
-            </Label>
-            <Input
-              id="link"
-              defaultValue="https://ui.shadcn.com/docs/installation"
-              readOnly
-            />
-          </div>
-          <Button type="submit" size="sm" className="px-3">
-            <span className="sr-only">Copy</span>
-          </Button>
-        </div>
-        <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
-          </DialogClose>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+    <>
+    
+     {view === 'Login' && <Login />}
+     {view === 'SignUp' && <SignUp />}
+     {view === 'ResetPassWord' && <ResetPassword />}
+     
+    </>
   )
 
 }

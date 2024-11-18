@@ -1,7 +1,7 @@
 "use client"
 
 import React, { ReactNode } from 'react'
-import { RecoilRoot } from 'recoil'
+
 import NavBar from '../NavBar/NavBar'
 
 type LayoutProps = {
@@ -10,10 +10,10 @@ type LayoutProps = {
 
 const Layout : React.FC<LayoutProps> = ({ children }) => {
   return (
-    <RecoilRoot>
+    <>
       <NavBar />
       {children}
-    </RecoilRoot>
+    </>
   )
 }
 
